@@ -1,14 +1,13 @@
 name: Dev Excuses Generator setup
 
-on: 
+on:
   push:
     branches: [main, master]
-
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: checkout
         uses: actions/checkout@v4
       - name: setup node
@@ -42,4 +41,3 @@ jobs:
           app-name: 'DevExcuseGenerator'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           package: .
-
