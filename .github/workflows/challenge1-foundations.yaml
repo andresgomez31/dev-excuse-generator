@@ -1,0 +1,25 @@
+name: Dev Excuses Generator setup
+
+on: 
+  push:
+    branches: [main, master]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: install dependencies
+        run: npm install
+      - name: validate code using ESLint
+        run: npm run lint
+      - name: verify code formatting
+        run: npm run format:check
+
